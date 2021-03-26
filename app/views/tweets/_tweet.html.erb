@@ -1,6 +1,6 @@
-<%= turbo_frame_tag tweet do %>
-<div class="card card-body">
-  <div><%= tweet.body %></div>
-  <%= render "tweets/tweet_actions", tweet: tweet %>
-</div>
+<%= turbo_frame_tag dom_id(tweet) do %>
+  <div class="card card-body">
+    <div><%= tweet.body %></div>
+    <%= render "tweets/tweet_actions", tweet: tweet %>
+  </div>
 <% end %>
