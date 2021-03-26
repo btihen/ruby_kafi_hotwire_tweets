@@ -1,0 +1,9 @@
+<div class="btn-toolbar mt-4" role="toolbar">
+  <div class="btn-group mr-2" role="group">
+    <%= link_to 'Edit', edit_tweet_path(tweet),
+                class: "btn btn-sm btn-outline-primary" %>
+    <%= link_to 'Destroy', tweet_path(tweet), method: :delete,
+                data: { confirm: 'Are you sure?' },
+                class: "btn btn-sm btn-outline-danger" %>
+  </div>
+</div>
