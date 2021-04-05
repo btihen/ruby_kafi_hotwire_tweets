@@ -1,0 +1,11 @@
+<%= link_to "#", class: 'btn btn-sm btn-outline-primary', data: { toggle: "modal", target: "#tweetModal" } do %>
+New Tweet
+<% end %>
+
+<div class="modal fade" id="tweetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= render "tweets/modal_form", tweet: tweet %>
+    </div>
+  </div>
+</div>

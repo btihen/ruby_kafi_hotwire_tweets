@@ -1,0 +1,14 @@
+<!-- to prepend on create - disabled to avoid double vision when broadcasting -->
+<%#%   stream_action   dom_id_target, render_partial,       send_local_variables   %>
+<%# turbo_stream.prepend "tweets", partial: "tweets/tweet", locals: { tweet: @tweet } %>
+
+<!-- might be better to use JS method and never conflict with replace in failure condition -->
+<%# clear form on create - without js - but now disable above or have double vision %>
+<%# turbo_stream.replace "new-tweet", partial: "tweets/form", locals: { tweet: Tweet.new } %>
+
+<!-- with a modal it auto clears so we don't conflict with a replace after create -->
+<%# turbo_stream.replace "new_tweet", partial: "tweets/modal_form", locals: { tweet: @tweet } %>
+<%= turbo_stream.replace @tweet, partial: "tweets/modal_form", locals: { tweet: @tweet } %>
+
+<%# to send a message to the notice partial %>
+<%# turbo_stream.append "notice", partial: "shared/notice", locals: {notice: "Tweet was successfully created."} %>
