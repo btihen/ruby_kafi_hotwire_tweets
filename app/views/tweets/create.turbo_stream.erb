@@ -6,4 +6,5 @@
 <%= turbo_stream.replace "tweet-form", partial: "tweets/form", locals: { tweet: Tweet.new } %>
 
 <%# to send a message to the notice partial %>
-<%= turbo_stream.append "notice", partial: "shared/notice", locals: {notice: "Tweet was successfully created."} %>
+<%= turbo_stream.append "notice", partial: "shared/notice", locals: {notice: "Tweet Created!"} %>
+<%= turbo_stream.append "toasts", partial: "shared/toast", locals: {title: "Success!", notice: "Tweet Created!"} %>
