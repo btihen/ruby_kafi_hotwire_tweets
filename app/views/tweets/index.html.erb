@@ -4,11 +4,13 @@
 <h2 class="mt-3 h4 text-muted">New Tweet</h2>
 <%= render "tweets/modal_new", tweet: @tweet %>
 
+<!--
 <div class="card card-body">
   <%= turbo_frame_tag "tweet-form" do %>
     <%= render "tweets/form", tweet: @tweet %>
   <% end %>
 </div>
+-->
 
 <h2 class="mt-3 h4 text-muted">Tweet Feed</h2>
 <%= turbo_frame_tag "tweets" do %>
