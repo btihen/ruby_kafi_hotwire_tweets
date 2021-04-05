@@ -4,3 +4,6 @@
 
 <%# clear form on create - without js - but now disable above or have double vision %>
 <%= turbo_stream.replace "tweet-form", partial: "tweets/form", locals: { tweet: Tweet.new } %>
+
+<%# to send a message to the notice partial %>
+<%= turbo_stream.append "notice", partial: "shared/notice", locals: {notice: "Tweet was successfully created."} %>
