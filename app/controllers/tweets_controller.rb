@@ -26,13 +26,22 @@ class TweetsController < ApplicationController
 
     respond_to do |format|
       if @tweet.save
+        # format.turbo_stream
+        # format.turbo_stream { render turbo_stream: turbo_stream.prepend( "tweets", partial: "tweets/tweet", locals: { tweet: @tweet }) }
+        # or in create.turbo_stream.erb:
+        # <%= turbo_stream.prepend "tweets", partial: "tweets/tweet", locals: { tweet: @tweet } %>
         format.html { redirect_to tweets_url, notice: "Tweet was successfully created." }
+        # format.html { redirect_to @tweet, notice: "Tweet was successfully created." }
         format.json { render :show, status: :created, location: @tweet }
       else
-        format.turbo_stream { # route turbo validation errors
-                      render turbo_stream: turbo_stream.replace(
-                              @tweet, partial: "tweets/form",
-                              locals: { tweet: @tweet}) }
+        format.turbo_stream
+        # format.turbo_stream { render turbo_stream: turbo_stream.replace "new_tweet", partial: "tweets/modal_form", locals: { tweet: @tweet } }
+        # or in create.turbo_stream.erb:
+        # <%= turbo_stream.replace "new_tweet", partial: "tweets/modal_form", locals: { tweet: @tweet } %>
+        # format.turbo_stream { # route turbo validation errors
+        #               render turbo_stream: turbo_stream.replace(
+        #                       @tweet, partial: "tweets/form",
+        #                       locals: { tweet: @tweet}) }
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
@@ -46,6 +55,7 @@ class TweetsController < ApplicationController
         format.html { redirect_to @tweet, notice: "Tweet was successfully updated." }
         format.json { render :show, status: :ok, location: @tweet }
       else
+        format.turbo_stream
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end

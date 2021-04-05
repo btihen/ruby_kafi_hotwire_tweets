@@ -1,0 +1,38 @@
+<%= form_with(model: tweet, id: dom_id(tweet)) do |form| %>
+
+  <div class="modal-header">
+    <h5 class="modal-title">New Tweet</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <%# turbo_frame_tag "tweet-form" do %>
+    <div class="modal-body">
+      <% if tweet.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
+
+        <ul>
+          <% tweet.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+
+      <div class="field">
+        <%= form.label :body %>
+        <%= form.text_area :body %>
+      </div>
+    </div>
+  <%# end %>
+
+  <div class="modal-footer">
+    <div class="actions">
+      <%= form.submit class: "btn btn-sm btn-outline-success" %>
+      <%= link_to "Cancel", tweet, class: "btn btn-sm btn-outline-danger" %>
+    </div>
+  </div>
+
+<% end %>

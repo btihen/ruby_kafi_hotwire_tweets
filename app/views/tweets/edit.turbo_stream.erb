@@ -1,0 +1,3 @@
+<%# turbo_stream.replace "new_tweet", partial: "tweets/modal_form", locals: { tweet: @tweet } %>
+<!--              dom_id_target, render_partial,               send_local_variables    -->
+<%= turbo_stream.replace @tweet, partial: "tweets/edit_modal", locals: { tweet: @tweet } %>

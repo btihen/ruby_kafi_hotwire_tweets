@@ -1,0 +1,11 @@
+<%# to prepend on create %>
+<%# turbo_stream.prepend "tweets", partial: "tweets/tweet", locals: { tweets: @tweets } %>
+
+<%# for errors in form %>
+<%# turbo_stream.replace "new_tweet", partial: "tweets/modal_form", locals: { tweet: @tweet } %>
+<!--              dom_id_target, render_partial,               send_local_variables    -->
+<%= turbo_stream.replace @tweet, partial: "tweets/modal_form", locals: { tweet: @tweet } %>
+<%# turbo_stream.replace @tweet, partial: "tweets/modal", locals: { tweet: @tweet } %>
+
+<%# to hand flash %>
+<%= turbo_stream.append "falsh", partial: "shared/flash", locals: {notice: "Tweet was successfully created."} %>

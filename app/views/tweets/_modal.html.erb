@@ -1,0 +1,48 @@
+<%= link_to "#", class: 'btn btn-sm btn-outline-primary', data: { toggle: "modal", target: "#tweetModal" } do %>
+  New Tweet
+<% end %>
+
+<div class="modal fade" id="tweetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <%= form_with(model: tweet, id: dom_id(tweet)) do |form| %>
+
+        <div class="modal-header">
+          <h5 class="modal-title">New Tweet</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <% if tweet.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
+
+            <ul>
+              <% tweet.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+          <% end %>
+
+          <div class="field">
+            <%= form.label :body %>
+            <%= form.text_area :body %>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <div class="actions">
+            <%= form.submit class: "btn btn-sm btn-outline-success" %>
+            <%= link_to "Cancel", tweet, class: "btn btn-sm btn-outline-danger" %>
+          </div>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
