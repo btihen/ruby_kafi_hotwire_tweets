@@ -44,6 +44,7 @@ class TweetsController < ApplicationController
   def update
     respond_to do |format|
       if @tweet.update(tweet_params)
+        format.turbo_stream
         format.html { redirect_to @tweet, notice: "Tweet was successfully updated." }
         format.json { render :show, status: :ok, location: @tweet }
       else

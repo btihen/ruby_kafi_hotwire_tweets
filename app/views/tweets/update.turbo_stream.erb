@@ -1,0 +1,2 @@
+<%# to send a message to the notice partial %>
+<%= turbo_stream.append "notice", partial: "shared/notice", locals: {notice: "Tweet was successfully created."} %>
