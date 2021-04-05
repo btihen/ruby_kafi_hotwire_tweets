@@ -1,23 +1,26 @@
 <%= form_with(model: tweet, id: dom_id(tweet)) do |form| %>
-  <% if tweet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
+<%# form_with(model: tweet, id: dom_id(tweet),
+              data: {controller: "reset-form", action: "turbo:submit-end->reset-form#reset"}
+            ) do |form| %>
+<% if tweet.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
 
-      <ul>
-        <% tweet.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% tweet.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-  </div>
+<div class="field">
+  <%= form.label :body %>
+  <%= form.text_area :body %>
+</div>
 
-  <div class="actions">
-    <%= form.submit class: "btn btn-sm btn-outline-success" %>
-    <%= link_to "Cancel", @tweet, class: "btn btn-sm btn-outline-danger" %>
-  </div>
+<div class="actions">
+  <%= form.submit class: "btn btn-sm btn-outline-success" %>
+  <%= link_to "Cancel", @tweet, class: "btn btn-sm btn-outline-danger" %>
+</div>
 <% end %>

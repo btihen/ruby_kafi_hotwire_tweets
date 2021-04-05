@@ -1,0 +1,6 @@
+<!-- to prepend on create - disabled to avoid double vision when broadcasting -->
+<%#%   stream_action   dom_id_target, render_partial,       send_local_variables   %>
+<%# turbo_stream.prepend "tweets", partial: "tweets/tweet", locals: { tweet: @tweet } %>
+
+<%# clear form on create - without js - but now disable above or have double vision %>
+<%= turbo_stream.replace "tweet-form", partial: "tweets/form", locals: { tweet: Tweet.new } %>
